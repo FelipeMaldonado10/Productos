@@ -1,0 +1,42 @@
+.productos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columnas iguales */
+  gap: 0.5rem 1rem; /* Espacio vertical y horizontal */
+  background: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Encabezados de columnas */
+.grid-header {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #4a4a8c;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f4 100%);
+  border-radius: 0.5rem;
+  border-bottom: 2px solid #66a6ff;
+  text-align: center;
+}
+
+/* Items de datos */
+.grid-item {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  text-align: center;
+}
+
+.grid-item:hover {
+  transform: translateY(-1px);
+}
+
+.grid-item a {
+  text-decoration: none;
+  color: #4a4a8c;
+  font-weight: 500;
+}

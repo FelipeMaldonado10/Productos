@@ -1,0 +1,13 @@
+<div class="detalle-producto">
+      <h2>Detalle del Producto</h2>
+      <p><b>ID:</b> {{ id }}</p>
+      <nav>
+            <a routerLink="description" routerLinkActive="active">Descripción</a>
+            <a routerLink="reviews" routerLinkActive="active">Reseñas</a>
+      </nav>
+      <!-- Botón para volver a la página de inicio -->
+      <button (click)="volverAlHome()">Volver al inicio</button>
+
+      <!-- Aquí se cargan las rutas hijas -->
+      <router-outlet></router-outlet>
+</div>

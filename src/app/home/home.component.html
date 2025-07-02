@@ -1,0 +1,19 @@
+<h1>Bienvenido a la página de inicio</h1>
+<h2>{{nombre|saludo:horas}}</h2>
+<p>{{today | date:'fullDate'}}</p>
+<h2>Lista de Productos</h2>
+<div class="productos-grid">
+  <div class="grid-header">Producto</div>
+  <div class="grid-header">Precio</div>
+
+  <ng-container *ngFor="let product of products">
+    <div class="grid-item" [appFondo]="'#e8d7f3'">
+      <a [routerLink]="['/product', product.id]" [queryParams]="{ modo:'detallado' }">
+        {{ product.name | uppercase }}
+      </a>
+    </div>
+    <div class="grid-item" [appFondo]="'#f3e8d7'">
+      {{ product.price | currency:'COP'}}
+    </div>
+  </ng-container>
+</div>
