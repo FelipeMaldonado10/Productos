@@ -3,18 +3,23 @@ nav {
   padding: 1rem;
 }
 
-ul {
+nav ul {
   display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-
-a {
+ nav li {
+  min-width: 70px;
+  text-align: center;
+}
+nav a {
   color: white;
   text-decoration: none;
+  font-family: 'Times New Roman', Times, serif;
   font-weight: 500;
   font-size: 1.1rem;
   padding: 0.5rem 1rem;
@@ -23,11 +28,21 @@ a {
   cursor: pointer;
 }
 
-a:hover {
+nav a:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-a.active {
+nav a.active {
   background: rgba(255, 255, 255, 0.2);
   border-bottom: 3px solid #fff;
+}
+
+@media (max-width: 600px) {
+  nav ul {
+    gap: 0.5rem;
+  }
+  nav li {
+    min-width: 60px;
+    font-size: 0.95rem;
+  }
 }
