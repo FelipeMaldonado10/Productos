@@ -16,7 +16,14 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/contact" routerLinkActive="active" (click)="closeNavbar()">Contacto</a>
         </li>
-        <!-- Agrega más opciones aquí -->
+        <li class="nav-item" *ngIf="(authService.isLoggedIn()); else loginLink">
+          <a class="nav-link" (click)="logout()">Cerrar sesión</a>
+        </li>
+        <ng-template #loginLink>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active" (click)="closeNavbar()">Iniciar sesión</a>
+          </li>
+        </ng-template>
       </ul>
     </div>
   </div>
