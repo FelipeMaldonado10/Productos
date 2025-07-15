@@ -1,6 +1,6 @@
 .productos-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 columnas iguales */
+  grid-template-columns: 1fr 1fr 1fr; /* 3 columnas iguales */
   gap: 0.5rem 1rem; /* Espacio vertical y horizontal */
   background: white;
   border-radius: 1rem;
@@ -29,6 +29,7 @@
   transition: all 0.2s ease;
   border: 1px solid transparent;
   text-align: center;
+  align-self: center;
 }
 
 .grid-item:hover {
@@ -40,3 +41,68 @@
   color: #4a4a8c;
   font-weight: 500;
 }
+
+.grid-item button  {
+  margin-right: 0.5rem;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+}
+
+.modal {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column; /* apila el contenido verticalmente */
+  align-items: center;    /* centra el contenido horizontalmente */
+  justify-content: center;
+  position: relative;
+  z-index: 1051;
+  background: #fff !important;
+  color: #222 !important;
+  padding: 2rem 1.5rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  max-width: 25rem;
+  width: 90%;
+  max-height: 13rem;         /* Limita la altura máxima */
+  overflow-y: auto;         /* Agrega scroll si el contenido es muy alto */
+  box-shadow: 0 4px 12px rgba(51, 55, 110, 0.808);
+}
+
+
+
+.modal-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.modal-buttons button {
+  width: auto;
+  min-width: 110px;
+  height: 42px;
+  font-size: 1rem;
+  padding: 0 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.644);
+  font-size: large;
+}
+
+
+
+@media (max-width: 991px) {
+  .grid-item button{
+    margin-bottom: 0.2rem;
+  }
+}  

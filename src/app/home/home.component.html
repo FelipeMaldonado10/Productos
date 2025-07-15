@@ -2,18 +2,39 @@
 <h2>{{nombre|saludo:horas}}</h2>
 <p>{{today | date:'fullDate'}}</p>
 <h2>Lista de Productos</h2>
+<div *ngIf="mensaje" [ngClass]="{'alert-success': tipoMensaje === 'success', 'alert-danger': tipoMensaje === 'error'}" class="alert">
+  {{ mensaje }}
+</div>
+
 <div class="productos-grid">
   <div class="grid-header">Producto</div>
   <div class="grid-header">Precio</div>
+  <div class="grid-header">Acciones</div>
 
   <ng-container *ngFor="let product of products">
-    <div class="grid-item" [appFondo]="'#e8d7f3'">
-      <a [routerLink]="['/product', product.id]" [queryParams]="{ modo:'detallado' }">
-        {{ product.name | uppercase }}
-      </a>
-    </div>
-    <div class="grid-item" [appFondo]="'#f3e8d7'">
-      {{ product.price | currency:'COP'}}
-    </div>
+      <div class="grid-item" [appFondo]="'#e8d7f3'" [routerLink]="['/product', product._id]" [queryParams]="{ modo:'detallado' }">
+        <a [routerLink]="['/product', product._id]" [queryParams]="{ modo:'detallado' }">
+          {{ product.name | uppercase }}
+        </a>
+      </div>
+      <div class="grid-item" [appFondo]="'#f3e8d7'" [routerLink]="['/product', product._id]" [queryParams]="{ modo:'detallado' }">
+        {{ product.price | currency:'COP'}}
+      </div>
+      <div class="grid-item">
+        <button *ngIf="authService.isLoggedIn()" class="btn btn-primary" (click)="editProduct(product)"><i class="bi bi-pencil"></i> Editar</button>
+        <button class="btn btn-danger" (click)="confirmarEliminacion(product)"><i class="bi bi-trash"></i> Eliminar</button>
+      </div>
   </ng-container>
 </div>
+<div class="modal-backdrop" *ngIf="productoAEliminar">
+  <div class="modal">
+    <p>¿Seguro que deseas eliminar <strong>{{ productoAEliminar.name }}</strong>?</p>
+    <div class="modal-buttons">
+      <button class="btn btn-danger" (click)="eliminarConfirmado()">Sí, eliminar</button>
+      <button class="btn btn-secondary" (click)="cancelarEliminacion()">Cancelar</button>
+    </div>  
+  </div>
+</div>
+<div class="product-form">
+  <app-product-form [editingProduct]="selectedProduct" (cancelEdit)="selectedProduct = null"></app-product-form>
+</div>  

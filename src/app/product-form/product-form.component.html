@@ -1,0 +1,18 @@
+<div class="product-form">  
+    <div *ngIf="mensaje" [ngClass]="{'alert-success': tipoMensaje === 'success', 'alert-danger': tipoMensaje === 'error'}" class="alert">
+        {{ mensaje }}
+    </div>
+
+    <h2>{{ isEditMode ? 'Editar producto' : 'Agregar producto' }}</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <input formControlName="name" placeholder="Nombre del producto" required>
+        <input formControlName="description" placeholder="Descripción" required>
+        <input formControlName="price" aria-label="Precio" type="number" placeholder="Precio" required>
+        <div class="acciones">
+            <button class="btn btn-success"type="submit">
+                <i class="bi bi-plus-circle"></i> {{ isEditMode ? 'Guardar' : 'Agregar' }}
+            </button>
+            <button class="btn btn-danger" (click)="onCancel()" *ngIf="isEditMode"><i class="bi bi-x-circle"></i> Cancelar</button>
+        </div>
+    </form>
+</div>    
